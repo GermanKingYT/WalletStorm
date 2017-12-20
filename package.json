@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/TachyonRSA/WalletStorm#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "path": "^0.12.7"
   }
 }
