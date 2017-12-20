@@ -1,6 +1,7 @@
 //Requirements for the app
 var path = require('path');
 var express = require('express');
+var models = require("./models");
 var app = express();
 //Setup handlebars for the templating engine
 var handlebars = require('express-handlebars').create({
@@ -31,6 +32,8 @@ app.use(function(req,res){
 
 var http = require('http').Server(app);
 
-http.listen(3000, function(){
-  console.log("Server running");
+models.sequelize.sync().then(function () {
+    http.listen(process.env.SERVER_PORT, function(){
+        console.log("Server is running.");
+    })
 });

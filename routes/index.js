@@ -4,7 +4,7 @@ const routes = require('express').Router();
 routes.get('/', (req, res) => {
 });
 
-var login = require('./auth.js');
-routes.use('/auth', login);
+var auth = require('./auth.js');
+routes.use('/auth', auth);
 
 module.exports = routes;
