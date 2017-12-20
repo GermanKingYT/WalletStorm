@@ -32,7 +32,11 @@ app.use(function(req,res){
 
 var http = require('http').Server(app);
 
-models.sequelize.sync().then(function () {
+models.sequelize.sync({ force: true }).then(function () {
+    models.User.create({
+        email: 'Test',
+        password: 'Password'
+    })
     http.listen(process.env.SERVER_PORT, function(){
         console.log("Server is running.");
     })
