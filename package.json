@@ -1,0 +1,22 @@
+{
+  "name": "walletstorm",
+  "version": "1.0.0",
+  "description": "Crypto wallet watcher and dashboard",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TachyonRSA/WalletStorm.git"
+  },
+  "author": "Pierre philip du Preez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TachyonRSA/WalletStorm/issues"
+  },
+  "homepage": "https://github.com/TachyonRSA/WalletStorm#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
