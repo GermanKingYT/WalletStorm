@@ -4,7 +4,10 @@ const routes = require('express').Router();
 routes.get('/', (req, res) => {
 });
 
-var auth = require('./auth.js');
+var auth = require('./auth');
+var dash = require('./dash')
+
 routes.use('/auth', auth);
+routes.use('/dashboard', dash);
 
 module.exports = routes;

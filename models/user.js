@@ -2,7 +2,9 @@ const crypto = require('crypto');
 const dotenv = require('dotenv').config();
 
 function cryptPassword(password, callback) {
+    //Set the encoding type of the hasing algortihm for storage in the database
     crypto.DEFAULT_ENCODING = 'hex';
+    //Use the PBKDF2 key derivative algorithm for hashing
     crypto.pbkdf2(password, process.env.PBKDF2_SALT, parseInt(process.env.PBKDF2_ITERATIONS), 64, 'sha512', (err, derivedKey) => {
         return callback(err, derivedKey);
     });
@@ -37,6 +39,16 @@ module.exports = (sequelize, DataTypes) => {
             });
         });
     });
+
+    User.prototype.validPassword = function(password){
+        var self = this;
+
+        return new Promise(function(resolve, reject){
+            cryptPassword(password, function(err, encrypted) {
+                resolve(self.password === encrypted);
+            });
+        });
+    }
 
     return User;
   };

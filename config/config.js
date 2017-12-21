@@ -7,7 +7,11 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: 'mysql'
+    dialect: 'mysql',
+    pool: {
+      maxConnections: 100,
+      maxIdleTime: 1000
+    }
   },
   production: {
     database: process.env.DB_PROD_NAME,
@@ -15,6 +19,10 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: 'mysql'
+    dialect: 'mysql',
+    pool: {
+      maxConnections: 100,
+      maxIdleTime: 1000
+    }
   }
 }
