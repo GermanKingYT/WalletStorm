@@ -10,7 +10,9 @@ var sessionChecker = (req, res, next) => {
 };
 
 routes.get('/', sessionChecker, (req, res) => {
-    res.json({ "TEST": "TEST"});
+    res.render('dashboard', {
+        title: 'WalletStorm - Dashboard'
+    });
 });
 
 module.exports = routes;
