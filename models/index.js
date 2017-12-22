@@ -10,7 +10,8 @@ var db        = {};
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
-  dialect: config.dialect
+  dialect: config.dialect,
+  pool: config.pool
 });
 
 fs
