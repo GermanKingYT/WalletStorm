@@ -28,6 +28,18 @@ module.exports = (sequelize, DataTypes) => {
           type: DataTypes.STRING,
           allowNull: true
       }
+    }, {
+        instanceMethods: {
+            validPassword: function(password) {
+                var self = this;
+
+                return new Promise(function(resolve, reject){
+                    cryptPassword(password, function(err, encrypted){
+                        resolve(self.password === encrypted);
+                    });
+                });
+            }
+        }
     });
 
     User.beforeCreate(function(model, options) {    
@@ -40,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         });
     });
 
+    /* Was for sequelize version 4....
     User.prototype.validPassword = function(password){
         var self = this;
 
@@ -48,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
                 resolve(self.password === encrypted);
             });
         });
-    }
+    }*/
 
     return User;
   };
