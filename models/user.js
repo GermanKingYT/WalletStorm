@@ -52,16 +52,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     });
 
-    /* Was for sequelize version 4....
-    User.prototype.validPassword = function(password){
-        var self = this;
-
-        return new Promise(function(resolve, reject){
-            cryptPassword(password, function(err, encrypted) {
-                resolve(self.password === encrypted);
-            });
-        });
-    }*/
-
     return User;
   };
