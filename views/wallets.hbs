@@ -1,0 +1,54 @@
+<link href="/css/dashboard.css" rel="stylesheet">
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container"> <a class="navbar-brand" href="/dashboard">WalletStorm</a>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li><a href="/dashboard">Home</a>
+				</li>
+				<li class="active"><a href="#">Wallets <span class="sr-only">(current)</span></a>
+				</li>
+				<li><a href="#">Settings</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="jumbotron">
+	<div class="container">
+		<h1 class="display-3">Wallets</h1>
+		<p>Welcome to your wallet overview, from here you can manage your individual wallets.</p>
+	</div>
+</div>
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading"> <i class="fa fa-bar-chart-o fa-fw"></i> Wallet Details</div>
+		<div class="panel-body">
+			<div class="btn-group" role="group" aria-label="...">
+				<button type="button" class="btn btn-default">Add wallet</button>
+				<button type="button" class="btn btn-default">Edit wallet</button>
+				<button type="button" class="btn btn-default">Export wallet</button>
+				<button type="button" class="btn btn-default">Delete wallet</button>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Currency</th>
+                        <th scope="col">Code</th>
+						<th scope="col">Address</th>
+						<th scope="col">Balance</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Bitcoin</td>
+                        <td>BTC</td>
+						<td>1Gx9FCknxSsLfFDzFdn75Xgqx95sDp38ir</td>
+						<td>6.59208695 <i class="fa fa-btc"></i> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
