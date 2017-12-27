@@ -22,4 +22,11 @@ routes.get('/wallets', sessionChecker, (req, res) => {
     });
 });
 
+routes.get('/about', sessionChecker, (req, res) => {
+   res.render('about', {
+       title: 'Walletstorm - About',
+       name: 'Test'
+   });
+});
+
 module.exports = routes;
