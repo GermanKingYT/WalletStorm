@@ -1,5 +1,5 @@
 //Requirements for the app
-const dotenv = require('dotenv').config();
+var dotenv = require('dotenv').config();
 var path = require('path');
 var express = require('express');
 var models = require("./models");
@@ -65,10 +65,10 @@ var http = require('http').Server(app);
 models.sequelize.sync({ force: true }).then(function () {
     if(process.env.NODE_ENV.trim() === "development"){
         models.User.create({
-            email: 'admin@walletstorm.com',
-            password: 'Password',
-            firstName: 'Admin',
-            lastName: 'Man'
+            email: process.env.ADMIN_EMAIL,
+            password: process.env.ADMIN_PASSWORD,
+            firstName: process.env.ADMIN_FIRSTNAME,
+            lastName: process.env.ADMIN_LASTNAME
         })
     }
     http.listen(process.env.SERVER_PORT, function(){
