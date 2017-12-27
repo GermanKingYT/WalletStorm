@@ -10,6 +10,10 @@
 				<li><a href="#">Settings</a>
 				</li>
 			</ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Welcome, {{name}}</a>
+                </li>
+            </ul>
 		</div>
 	</div>
 </nav>
@@ -21,7 +25,11 @@
 </div>
 <div class="container">
 	<div class="panel panel-default">
-		<div class="panel-heading"> <i class="fa fa-bar-chart-o fa-fw"></i> Wallet Details</div>
+        <font size="4"><div class="panel-heading">Wallet Details
+            <div class="pull-right">
+                <a href="#">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></a>
+            </div></font>
+        </div>
 		<div class="panel-body">
 			<div class="btn-group" role="group" aria-label="...">
 				<button type="button" class="btn btn-default">Add wallet</button>
@@ -37,6 +45,7 @@
                         <th scope="col">Code</th>
 						<th scope="col">Address</th>
 						<th scope="col">Balance</th>
+                        <th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -45,8 +54,17 @@
 						<td>Bitcoin</td>
                         <td>BTC</td>
 						<td>1Gx9FCknxSsLfFDzFdn75Xgqx95sDp38ir</td>
-						<td>6.59208695 <i class="cc BTC-alt"></i></td>
+                        <td>6.59208695 <i class="cc BTC-alt"></i></td>
+                        <td><input type="checkbox"></td>
 					</tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Ethereum</td>
+                        <td>ETH</td>
+                        <td>0x7cb57b5a97eabe94205c07890be4c1ad31e486a8</td>
+                        <td>21.74862440 <i class="cc ETH-alt"></i></td>
+                        <td><input type="checkbox"></td>
+                    </tr>
 				</tbody>
 			</table>
 		</div>

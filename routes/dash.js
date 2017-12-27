@@ -17,7 +17,8 @@ routes.get('/', sessionChecker, (req, res) => {
 
 routes.get('/wallets', sessionChecker, (req, res) => {
     res.render('wallets', {
-        title: 'Walletstorm - Wallets'
+        title: 'Walletstorm - Wallets',
+        name: 'Test'
     });
 });
 
