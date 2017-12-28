@@ -64,16 +64,24 @@ var http = require('http').Server(app);
 
 models.sequelize.sync({ force: true }).then(function () {
     if(process.env.NODE_ENV.trim() === "development"){
+        //Seed the database. Just for initial development, will be changed to seeders later on.
         models.User.create({
             email: process.env.ADMIN_EMAIL,
             password: process.env.ADMIN_PASSWORD,
             firstName: process.env.ADMIN_FIRSTNAME,
             lastName: process.env.ADMIN_LASTNAME
-        });
-        models.Coin.create({
-            name: 'Bitcoin',
-            code: 'BTC',
-            apiEndpoint: 'https://bitaps.com/api/address/'
+        }).then(function() {
+            models.Coin.create({
+                name: 'Bitcoin',
+                code: 'BTC',
+                apiEndpoint: 'https://bitaps.com/api/address/'
+            }).then(function() {
+                models.Wallet.create({
+                    UserId: 1,
+                    CoinId: 1,
+                    address: '15PFLdc645mMmTi8ss5WrzVQ6gzYhGUNiA'
+                });
+            });
         });
     }
     http.listen(process.env.SERVER_PORT, function(){

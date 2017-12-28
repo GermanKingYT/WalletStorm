@@ -39,6 +39,11 @@ module.exports = (sequelize, DataTypes) => {
                     });
                 });
             }
+        },
+        classMethods: {
+            associate () {
+                User.hasMany(sequelize.models['Wallet']);
+            }
         }
     });
 

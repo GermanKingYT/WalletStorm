@@ -21,6 +21,5 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     });
-    
     return Coin;
 };

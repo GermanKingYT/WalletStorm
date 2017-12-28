@@ -2,6 +2,10 @@ module.exports = (sequelize, DataTypes) => {
     const app = this;
     
     var Wallet = sequelize.define('Wallet', {
+        UserId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         CoinId: {
             type: DataTypes.INTEGER,
             allowNull: false
