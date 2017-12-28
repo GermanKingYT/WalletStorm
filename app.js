@@ -31,8 +31,8 @@ app.use(cookieParser());
 //Use sessions for tracking logins
 app.use(session({
     store: new RedisStore({
-        host: process.env.DB_HOST,
-        port: 6379,
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT,
         client: client,
         ttl: 260
     }),
