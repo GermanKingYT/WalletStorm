@@ -19,6 +19,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: 0.00000000
         }
+    }, {
+        classMethods: {
+            associate () {
+                Wallet.belongsTo(sequelize.models['User']);
+            }
+        }
     });
     
     return Wallet;

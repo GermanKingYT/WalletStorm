@@ -40,7 +40,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
 						<th scope="col">Currency</th>
                         <th scope="col">Code</th>
 						<th scope="col">Address</th>
@@ -49,8 +48,13 @@
 					</tr>
 				</thead>
 				<tbody>
+                    {{#each wallet}}
+                        <tr>
+                            
+                            
+                        </tr>
+                    {{/each}}
 					<tr>
-						<th scope="row">1</th>
 						<td>Bitcoin</td>
                         <td>BTC</td>
 						<td>1Gx9FCknxSsLfFDzFdn75Xgqx95sDp38ir</td>
@@ -58,7 +62,6 @@
                         <td><input type="checkbox"></td>
 					</tr>
                     <tr>
-                        <th scope="row">2</th>
                         <td>Ethereum</td>
                         <td>ETH</td>
                         <td>0x7cb57b5a97eabe94205c07890be4c1ad31e486a8</td>
