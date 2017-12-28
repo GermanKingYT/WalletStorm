@@ -1,0 +1,53 @@
+<link href="/css/dashboard.css" rel="stylesheet">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container"> <a class="navbar-brand" href="/dashboard">WalletStorm</a>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/dashboard">Home</a>
+                </li>
+                <li><a href="/dashboard/wallets">Wallets</a>
+                </li>
+                <li><a href="/dashboard/about">About</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Welcome, {{name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron">
+	<div class="container">
+		<h1 class="display-3">Add Wallet</h1>
+		<p>To add a new wallet, fill in all the required fields below.</p>
+	</div>
+</div>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><font size="4">New Wallet Details</font></div>
+        <div class="panel-body">
+            <form action="">
+                
+                <div class="form-group">
+                    <label for="currencyList">Select crypto-currency:</label>
+                    <select class="form-control" id="currencyList">
+                        {{#each currencyName}}
+                            <option>{{this.name}}</option>
+                        {{else}}
+                            <option>No crypto-currencies</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Wallet address:</label>
+                    <input type="text" class="form-control" id="address">
+                </div>
+                
+                <a href="/dashboard/wallets" class="btn btn-danger">Cancel</a>
+                <button type="button" class="btn btn-primary pull-right">Add Wallet</button>
+            </form>
+        </div>
+    </div>
+</div>

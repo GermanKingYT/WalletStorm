@@ -5,7 +5,7 @@ routes.get('/', (req, res) => {
 });
 
 var auth = require('./auth');
-var dash = require('./dash')
+var dash = require('./dash');
 
 routes.use('/auth', auth);
 routes.use('/dashboard', dash);
