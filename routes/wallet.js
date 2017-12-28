@@ -4,21 +4,20 @@ var db = require("../models");
 routes.get('/', (req, res) => {
     
     db.Wallet.findAll({
-        raw : true,
         include : [{
             model : db.User,
             where : {id : req.session.user.id}
         }, {
-            model : db.Coin
+            model : db.Coin,
+            as: 'Coin'
         }]
     }).then((wallets) => {
-        
-        console.log(wallets);
+        var jsonData = JSON.parse(JSON.stringify(wallets));
         
         res.render('wallets', {
             title: 'Walletstorm - Wallets',
             name: 'Test',
-            wallet: wallets
+            wallet: jsonData
         });
     });
 });

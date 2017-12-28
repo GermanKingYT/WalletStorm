@@ -48,28 +48,17 @@
 					</tr>
 				</thead>
 				<tbody>
-                    {{#each wallet}}
+                    {{#wallet}}
                         <tr>
-                            
-                            
+                            <td>{{this.Coin.name}}</td>
+                            <td>{{this.Coin.code}}</td>
+                            <td>{{this.address}}</td>
+                            <td>{{this.balance}} <i class="cc {{this.Coin.code}}-alt"></i></td>
+                            <td><input type="checkbox" id={{this.Coin.id}}></td>
                         </tr>
                     {{else}}
                         <p>NO DATA</p>
-                    {{/each}}
-					<tr>
-						<td>Bitcoin</td>
-                        <td>BTC</td>
-						<td>1Gx9FCknxSsLfFDzFdn75Xgqx95sDp38ir</td>
-                        <td>6.59208695 <i class="cc BTC-alt"></i></td>
-                        <td><input type="checkbox"></td>
-					</tr>
-                    <tr>
-                        <td>Ethereum</td>
-                        <td>ETH</td>
-                        <td>0x7cb57b5a97eabe94205c07890be4c1ad31e486a8</td>
-                        <td>21.74862440 <i class="cc ETH-alt"></i></td>
-                        <td><input type="checkbox"></td>
-                    </tr>
+                    {{/wallet}}
 				</tbody>
 			</table>
 		</div>
