@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true
         }
+    }, {
+        classMethods: {
+            associate () {
+                Coin.hasOne(sequelize.models['Wallet']);
+            }
+        }
     });
     
     return Coin;
