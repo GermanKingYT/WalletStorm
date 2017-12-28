@@ -7,6 +7,9 @@ var models = require("./models");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+var redis = require("redis");
+var client = redis.createClient();
 
 var app = express();
 //Setup handlebars for the templating engine
@@ -27,10 +30,16 @@ app.use(cookieParser());
 
 //Use sessions for tracking logins
 app.use(session({
+    store: new RedisStore({
+        host: process.env.DB_HOST,
+        port: 6379,
+        client: client,
+        ttl: 260
+    }),
     key: 'user_sid',
     secret: process.env.SERVER_SECRET,
-    resave: false,
     saveUninitialized: false,
+    resave: false,
     cookie: {
         expires: 60000000
     }

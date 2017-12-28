@@ -16,7 +16,6 @@ routes.get('/', (req, res) => {
         
         res.render('wallets', {
             title: 'Walletstorm - Wallets',
-            name: 'Test',
             wallet: jsonData
         });
     });

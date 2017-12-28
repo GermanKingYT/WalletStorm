@@ -2,6 +2,7 @@ const routes = require('express').Router();
 var models = require("../models");
 
 var sessionChecker = (req, res, next) => {
+    console.log(req.session);
     if (req.session.user && req.cookies.user_sid) {
         res.redirect('/dashboard');
     } else {
