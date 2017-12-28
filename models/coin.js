@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         classMethods: {
             associate () {
-                Coin.hasOne(sequelize.models['Wallet']);
+                Coin.hasMany(sequelize.models['Wallet']);
             }
         }
     });

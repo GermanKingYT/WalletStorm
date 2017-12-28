@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         classMethods: {
             associate () {
                 Wallet.belongsTo(sequelize.models['User']);
+                Wallet.belongsTo(sequelize.models['Coin']);
             }
         }
     });
