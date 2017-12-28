@@ -69,7 +69,12 @@ models.sequelize.sync({ force: true }).then(function () {
             password: process.env.ADMIN_PASSWORD,
             firstName: process.env.ADMIN_FIRSTNAME,
             lastName: process.env.ADMIN_LASTNAME
-        })
+        });
+        models.Coin.create({
+            name: 'Bitcoin',
+            code: 'BTC',
+            apiEndpoint: 'https://bitaps.com/api/address/'
+        });
     }
     http.listen(process.env.SERVER_PORT, function(){
         console.log("Server is running.");
