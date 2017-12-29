@@ -12,6 +12,11 @@ function cryptPassword(password, callback) {
 
 module.exports = (sequelize, DataTypes) => {
     var User = sequelize.define('User', {
+      'id': {
+          primaryKey: true,
+          type: DataTypes.UUID,
+          defaultValue: DataTypes.UUIDV4
+      },
       email: {
           type: DataTypes.STRING,
           allowNull: false

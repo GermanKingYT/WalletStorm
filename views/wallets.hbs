@@ -35,7 +35,8 @@
 				<a href="./wallets/add" class="btn btn-default">Add wallet</a>
 				<a href="./wallets/edit" class="btn btn-default">Edit wallet</a>
 				<a href="./wallets/export" class="btn btn-default">Export wallet</a>
-				<a href="./wallets/delete" class="btn btn-default">Delete wallet</a>
+                <input name="deleteWallet" id="deleteWallet" value="Delete wallet" type="submit" class="btn btn-default" />
+                <!--- <input name="like" id="like" value="Like" type="submit" /> --->
 			</div>
 			<table class="table table-hover">
 				<thead>
@@ -54,7 +55,7 @@
                             <td>{{this.Coin.code}}</td>
                             <td>{{this.address}}</td>
                             <td>{{this.balance}} <i class="cc {{this.Coin.code}}-alt"></i></td>
-                            <td><input type="checkbox" id={{this.Coin.id}}></td>
+                            <td><input type="radio" name="walletId" value={{this.id}} id="walletId"></td>
                         </tr>
                     {{else}}
                         <p>NO DATA</p>
@@ -64,3 +65,10 @@
 		</div>
 	</div>
 </div>
+
+<script>
+    $('#deleteWallet').click(function(){
+        var selectedID = document.querySelector('input[name=walletId]:checked').value;
+        $.post("/dashboard/wallets/delete", {id:selectedID}, function(data) {});
+    });
+</script>

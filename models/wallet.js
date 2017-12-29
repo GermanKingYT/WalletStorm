@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     
     var Wallet = sequelize.define('Wallet', {
         UserId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false
         },
         CoinId: {

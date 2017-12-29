@@ -13,7 +13,6 @@ routes.get('/', (req, res) => {
         }]
     }).then((wallets) => {
         var jsonData = JSON.parse(JSON.stringify(wallets));
-        
         res.render('wallets', {
             title: 'Walletstorm - Wallets',
             wallet: jsonData
@@ -22,9 +21,6 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/add', (req, res) => {
-    
-    console.log(req.session.user);
-    
     db.Coin.findAll({
         raw: true,
         attributes: ['name']
@@ -33,6 +29,18 @@ routes.get('/add', (req, res) => {
             title: 'Walletstorm - Add Wallet',
             currencyName: coins
         });
+    });
+});
+
+routes.post('/delete', (req, res) => {
+    var walletID = req.body.id;
+    var userID = req.session.user.id;
+    
+    db.Wallet.destroy({
+        where: {
+            id : walletID,
+            UserId : userID
+        }
     });
 });
 
