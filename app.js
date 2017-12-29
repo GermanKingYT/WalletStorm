@@ -88,5 +88,8 @@ models.sequelize.sync({ force: true }).then(function () {
     }
     http.listen(process.env.SERVER_PORT, function(){
         console.log("Server is running.");
+        if(process.env.NODE_ENV === "travis"){
+            process.exit();
+        }
     })
 });
