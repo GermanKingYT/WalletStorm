@@ -1,4 +1,5 @@
 const routes = require('express').Router();
+var request = require('request');
 var db = require("../models");
 
 routes.get('/', (req, res) => {
@@ -21,7 +22,35 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/refresh', (req, res) => {
+    res.render('walletRefresh', {
+        title: 'Walletstorm - Refresh',
+        name: req.session.user.firstName
+    })
     
+    db.Wallet.findAll({
+        include: [{
+            model: db.User,
+            where: {id : req.session.user.id}
+        }, {
+            model: db.Coin,
+            as: 'Coin'
+        }]
+    }).then((wallets) => {
+        var jsonData = JSON.parse(JSON.stringify(wallets));
+        
+        jsonData.forEach(function(wallet) {
+            var url = wallet.Coin.apiEndpoint + wallet.address;
+            
+            request(url, function(error, response, body) {
+                if(!error && response.statusCode == 200){
+                    var jsonResponse = JSON.parse(body);
+                    var balance = jsonResponse.balance/100000000;
+                    
+                    
+                }
+            })
+        });
+    })
 });
 
 routes.get('/add', (req, res) => {
