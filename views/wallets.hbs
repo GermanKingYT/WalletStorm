@@ -1,4 +1,5 @@
 <link href="/css/dashboard.css" rel="stylesheet">
+
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container"> <a class="navbar-brand" href="/dashboard">WalletStorm</a>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -27,7 +28,7 @@
 	<div class="panel panel-default">
         <div class="panel-heading"><font size="4">Wallet Details</font>
             <div class="pull-right">
-                <font size="4"><a href="#">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></a></font>
+                <font size="4"><a id="refreshWallet" href="/dashboard/wallets/refresh">Refresh <i class="fa fa-refresh" aria-hidden="true"></i></a></font>
             </div>
         </div>
 		<div class="panel-body">
@@ -75,6 +76,16 @@
         var selectedID = document.querySelector('input[name=walletId]:checked').value;
         $.post("/dashboard/wallets/delete", {id:selectedID}, function(data) {
             location.reload();
+        });
+    });
+    
+    $(function() {
+        $("#refreshWallet").on("click",function(e) {
+            e.preventDefault(); // cancel the link itself
+            
+            $.post(this.href,function(data) {
+                location.reload();
+            });
         });
     });
 </script>

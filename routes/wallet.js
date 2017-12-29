@@ -21,12 +21,7 @@ routes.get('/', (req, res) => {
     });
 });
 
-routes.get('/refresh', (req, res) => {
-    res.render('walletRefresh', {
-        title: 'Walletstorm - Refresh',
-        name: req.session.user.firstName
-    })
-    
+routes.post('/refresh', (req, res) => {    
     db.Wallet.findAll({
         include: [{
             model: db.User,
@@ -50,11 +45,14 @@ routes.get('/refresh', (req, res) => {
                         balance : balance
                     }, {
                         where : {id : wallet.id}
-                    })
+                    }).then(function() {
+                        res.json({ result : "Success"}); 
+                    });
                 }
-            })
+            });
         });
-    })
+        
+    });
 });
 
 routes.get('/add', (req, res) => {
