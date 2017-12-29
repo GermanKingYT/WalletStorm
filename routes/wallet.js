@@ -32,6 +32,10 @@ routes.get('/add', (req, res) => {
     });
 });
 
+routes.post('/add', (req, res) => {
+    
+});
+
 routes.post('/delete', (req, res) => {
     var walletID = req.body.id;
     var userID = req.session.user.id;
