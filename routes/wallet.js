@@ -21,7 +21,9 @@ routes.get('/', (req, res) => {
     });
 });
 
-routes.post('/refresh', (req, res) => {    
+routes.post('/refresh', (req, res) => {
+    var count = 0;
+    
     db.Wallet.findAll({
         include: [{
             model: db.User,
@@ -39,19 +41,22 @@ routes.post('/refresh', (req, res) => {
             request(url, function(error, response, body) {
                 if(!error && response.statusCode == 200){
                     var jsonResponse = JSON.parse(body);
-                    var balance = jsonResponse.balance/100000000;
+                    var balance = jsonResponse.data.confirmed_balance;
                     
                     db.Wallet.update({
                         balance : balance
                     }, {
                         where : {id : wallet.id}
                     }).then(function() {
-                        res.json({ result : "Success"}); 
+                        count++;
+                        
+                        if(count === jsonData.length){
+                            res.json({ result : "Success"});
+                        }
                     });
                 }
             });
         });
-        
     });
 });
 

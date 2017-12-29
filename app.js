@@ -70,7 +70,7 @@ models.sequelize.sync({ force: true }).then(function () {
         models.Coin.create({
             name: 'Bitcoin',
             code: 'BTC',
-            apiEndpoint: 'https://bitaps.com/api/address/'
+            apiEndpoint: 'https://chain.so/api/v2/get_address_balance/BTC/'
         }).then(function () {
             models.User.create({
                 email: process.env.ADMIN_EMAIL,
