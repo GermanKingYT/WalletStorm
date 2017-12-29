@@ -20,6 +20,10 @@ routes.get('/', (req, res) => {
     });
 });
 
+routes.get('/refresh', (req, res) => {
+    
+});
+
 routes.get('/add', (req, res) => {
     db.Coin.findAll({
         raw: true,
