@@ -46,7 +46,11 @@ routes.get('/refresh', (req, res) => {
                     var jsonResponse = JSON.parse(body);
                     var balance = jsonResponse.balance/100000000;
                     
-                    
+                    db.Wallet.update({
+                        balance : balance
+                    }, {
+                        where : {id : wallet.id}
+                    })
                 }
             })
         });
