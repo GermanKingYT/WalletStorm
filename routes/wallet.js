@@ -33,7 +33,25 @@ routes.get('/add', (req, res) => {
 });
 
 routes.post('/add', (req, res) => {
+    var walletAddress = req.body.address; 
+    var walletCoin = req.body.currency;
+    var userID = req.session.user.id;
     
+    console.log(req.session.user.id);
+    
+    db.Coin.findOne({
+        where:{
+            name: walletCoin,
+        }
+    }).then(function(coin) {
+       db.Wallet.create({
+           UserId: userID,
+           CoinId: coin.id,
+           address: walletAddress
+       }).then(function(){
+          res.redirect('/dashboard/wallets') ;
+       });
+    });
 });
 
 routes.post('/delete', (req, res) => {

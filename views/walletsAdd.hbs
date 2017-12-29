@@ -27,11 +27,11 @@
     <div class="panel panel-default">
         <div class="panel-heading"><font size="4">New Wallet Details</font></div>
         <div class="panel-body">
-            <form action="">
+            <form action="/dashboard/wallets/add" method="post">
                 
                 <div class="form-group">
-                    <label for="currencyList">Select crypto-currency:</label>
-                    <select class="form-control" id="currencyList">
+                    <label for="currency">Select crypto-currency:</label>
+                    <select class="form-control" name="currency" id="currency">
                         {{#each currencyName}}
                             <option>{{this.name}}</option>
                         {{else}}
@@ -42,11 +42,11 @@
 
                 <div class="form-group">
                     <label for="address">Wallet address:</label>
-                    <input type="text" class="form-control" id="address">
+                    <input type="text" class="form-control" name="address" id="address">
                 </div>
                 
                 <a href="/dashboard/wallets" class="btn btn-danger">Cancel</a>
-                <button type="button" class="btn btn-primary pull-right">Add Wallet</button>
+                <input type="submit" value="Add wallet" class="btn btn-primary pull-right">
             </form>
         </div>
     </div>

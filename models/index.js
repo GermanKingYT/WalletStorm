@@ -11,8 +11,7 @@ var db        = {};
 var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: config.dialect,
-  pool: config.pool,
-  logging: false
+  pool: config.pool
 });
 
 fs
