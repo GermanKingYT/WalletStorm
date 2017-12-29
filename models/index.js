@@ -4,14 +4,15 @@ var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
 var basename  = path.basename(__filename);
-var env       = process.env.NODE_ENV || 'development';
+var env       = process.env.NODE_ENV;
 var config    = require(__dirname + '/../config/config.js')[env];
 var db        = {};
 
 var sequelize = new Sequelize(config.database, config.username, config.password, {
   host: config.host,
   dialect: config.dialect,
-  pool: config.pool
+  pool: config.pool,
+  logging: false
 });
 
 fs

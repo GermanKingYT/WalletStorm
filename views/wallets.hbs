@@ -36,7 +36,6 @@
 				<a href="./wallets/edit" class="btn btn-default">Edit wallet</a>
 				<a href="./wallets/export" class="btn btn-default">Export wallet</a>
                 <input name="deleteWallet" id="deleteWallet" value="Delete wallet" type="submit" class="btn btn-default" />
-                <!--- <input name="like" id="like" value="Like" type="submit" /> --->
 			</div>
 			<table class="table table-hover">
 				<thead>
@@ -58,7 +57,12 @@
                             <td><input type="radio" name="walletId" value={{this.id}} id="walletId"></td>
                         </tr>
                     {{else}}
-                        <p>NO DATA</p>
+                        <tr>
+                            <td>NO DATA</td>
+                            <td>ND</td>
+                            <td>NO DATA</td>
+                            <td>0</td>
+                        </tr>
                     {{/wallet}}
 				</tbody>
 			</table>
@@ -69,6 +73,8 @@
 <script>
     $('#deleteWallet').click(function(){
         var selectedID = document.querySelector('input[name=walletId]:checked').value;
-        $.post("/dashboard/wallets/delete", {id:selectedID}, function(data) {});
+        $.post("/dashboard/wallets/delete", {id:selectedID}, function(data) {
+            location.reload();
+        });
     });
 </script>

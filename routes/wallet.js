@@ -41,6 +41,8 @@ routes.post('/delete', (req, res) => {
             id : walletID,
             UserId : userID
         }
+    }).then(function() {
+        res.json({response : 'Success'});
     });
 });
 
