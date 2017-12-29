@@ -7,4 +7,3 @@ before_script:
   
 script:
   - node app.js
-  - npm test
